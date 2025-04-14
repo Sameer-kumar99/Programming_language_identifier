@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Language Identifier</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4fc3f7;
+            --background-color: #f5f7f9;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        button.secondary {
+            background-color: #6c757d;
+        }
+
+        button.secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .result-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .result-card {
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .result-header h2 {
+            color: var(--primary-color);
+        }
+
+        .language-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .confidence {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .features-list {
+            margin-top: 20px;
+        }
+
+        .features-list h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .features-list ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            color: var(--accent-color);
+            position: absolute;
+            left: -20px;
+        }
+
+        .examples-section {
+            margin-top: 30px;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .example-card {
+            background-color: #f1f1f1;
+            border-radius: var(--border-radius);
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            background-color: #e9e9e9;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Programming Language Identifier</h1>
+            <p class="subtitle">Paste your code snippet and let us identify the programming language</p>
+        </header>
+
+        <div class="main-content">
+            <div class="card input-area">
+                <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+                <div class="buttons">
+                    <button id="identify-btn">Identify Language</button>
+                    <button id="clear-btn" class="secondary">Clear</button>
+                </div>
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Analyzing code...</p>
+                </div>
+                <div class="error-message" id="error-message"></div>
+            </div>
+
+            <div class="card result-area result-card" id="result-card">
+                <div class="result-header">
+                    <h2>Analysis Result</h2>
+                    <span class="language-badge" id="language-badge">Unknown</span>
+                </div>
+                <p id="result-description">Based on the syntax patterns in your code snippet, we've identified the programming language.</p>
+                <p class="confidence" id="confidence">Confidence level: Medium</p>
+                
+                <div class="features-list" id="features-list">
+                    <h3>Detected Features:</h3>
+                    <ul id="features">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card examples-section">
+                <h2>Try Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-card" data-lang="Python">Python</div>
+                    <div class="example-card" data-lang="JavaScript">JavaScript</div>
+                    <div class="example-card" data-lang="Java">Java</div>
+                    <div class="example-card" data-lang="C++">C++</div>
+                    <div class="example-card" data-lang="PHP">PHP</div>
+                    <div class="example-card" data-lang="Ruby">Ruby</div>
+                    <div class="example-card" data-lang="HTML">HTML</div>
+                    <div class="example-card" data-lang="CSS">CSS</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Programming Language Identifier | Created with 🧠 and ❤️</p>
+        </footer>
+    </div>
+
+    <script>
+
+        const examples = {
+            "Python": `def hello_world():
+    print("Hello, World!")
+    
+if __name__ == "__main__":
+    hello_world()`,
+            "JavaScript": `function helloWorld() {
+    console.log("Hello, World!");
+}
+
+const greeting = "Hi there";
+helloWorld();`,
+            "Java": `public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}`,
+            "C++": `#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}`,
+            "PHP": `<?php
+function helloWorld() {
+    echo "Hello, World!";
+}
+
+$greeting = "Hi there";
+helloWorld();
+?>`,
+            "Ruby": `def hello_world
+  puts "Hello, World!"
+end
+
+hello_world
+
+class Greeter
+  def initialize(name)
+    @name = name
+  end
+  
+  def greet
+    puts "Hello, #{@name}!"
+  end
+end`,
+            "HTML": `<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Welcome to my website.</p>
+</body>
+</html>`,
+            "CSS": `.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.btn:hover {
+  background-color: blue;
+}`
+        };
+
+        const codeInput = document.getElementById('code-input');
+        const identifyBtn = document.getElementById('identify-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const resultCard = document.getElementById('result-card');
+        const languageBadge = document.getElementById('language-badge');
+        const confidenceEl = document.getElementById('confidence');
+        const featuresList = document.getElementById('features');
+        const exampleCards = document.querySelectorAll('.example-card');
+        const loadingEl = document.getElementById('loading');
+        const errorMessageEl = document.getElementById('error-message');
+
+        const API_URL = 'language_identifier.php';
+
+        async function identifyLanguageAPI(code) {
+    try {
+        console.log("Sending code to API:", code.substring(0, 100) + "...");
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code: code })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log("API response:", result);
+        return result;
+    } catch (error) {
+        console.error('Error identifying language:', error);
+        throw error;
+    }
+}
+
+        identifyBtn.addEventListener('click', async () => {
+            const code = codeInput.value;
+            if (!code.trim()) {
+                showError('Please enter some code to identify.');
+                return;
+            }
+
+            loadingEl.style.display = 'block';
+            errorMessageEl.style.display = 'none';
+            resultCard.style.display = 'none';
+            
+            try {
+                const result = await identifyLanguageAPI(code);
+                displayResult(result);
+            } catch (error) {
+                showError('Failed to identify language. Please try again later.');
+            } finally {
+
+                loadingEl.style.display = 'none';
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            codeInput.value = '';
+            resultCard.style.display = 'none';
+            errorMessageEl.style.display = 'none';
+        });
+
+        exampleCards.forEach(card => {
+            card.addEventListener('click', async () => {
+                const lang = card.getAttribute('data-lang');
+                if (examples[lang]) {
+                    codeInput.value = examples[lang];
+
+                    loadingEl.style.display = 'block';
+                    errorMessageEl.style.display = 'none';
+                    resultCard.style.display = 'none';
+                    
+                    try {
+                        const result = await identifyLanguageAPI(examples[lang]);
+                        displayResult(result);
+                    } catch (error) {
+                        showError('Failed to identify language. Please try again later.');
+                    } finally {
+                       
+                        loadingEl.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        function displayResult(result) {
+    if (result.error) {
+        showError(result.error);
+        return;
+    }
+    
+    resultCard.style.display = 'block';
+    languageBadge.textContent = result.language;
+    confidenceEl.textContent = `Confidence level: ${result.confidence}`;
+
+    featuresList.innerHTML = '';
+    if (result.features && result.features.length > 0) {
+        result.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature;
+            featuresList.appendChild(li);
+        });
+        document.getElementById('features-list').style.display = 'block';
+    } else {
+        document.getElementById('features-list').style.display = 'none';
+    }
+
+    if (result.debug) {
+        console.log("Language detection scores:", result.debug.scores);
+    }
+
+    resultCard.scrollIntoView({ behavior: 'smooth' });
+}
+        function showError(message) {
+            errorMessageEl.textContent = message;
+            errorMessageEl.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+2025-04-14 23:12:27: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codA244.tmp
+2025-04-14 23:12:27: Code length: 123
+2025-04-14 23:12:27: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codA244.tmp" 2>&1
+2025-04-14 23:12:27: Python output: {"language": "Java", "confidence": "Medium", "features": ["Public class", "Main method", "System output"], "debug": {"scores": {"Python": 1, "JavaScript": 0, "Java": 3, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 1}}}
+2025-04-14 23:12:31: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codB2EE.tmp
+2025-04-14 23:12:31: Code length: 123
+2025-04-14 23:12:31: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codB2EE.tmp" 2>&1
+2025-04-14 23:12:31: Python output: {"language": "Java", "confidence": "Medium", "features": ["Public class", "Main method", "System output"], "debug": {"scores": {"Python": 1, "JavaScript": 0, "Java": 3, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 1}}}
+2025-04-14 23:12:33: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codBB5C.tmp
+2025-04-14 23:12:33: Code length: 169
+2025-04-14 23:12:33: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codBB5C.tmp" 2>&1
+2025-04-14 23:12:33: Python output: {"language": "Ruby", "confidence": "Medium", "features": ["Method definition", "Output statement", "End keyword"], "debug": {"scores": {"Python": 1, "JavaScript": 0, "Java": 0, "C++": 0, "PHP": 0, "Ruby": 3, "HTML": 0, "CSS": 0}}}
+2025-04-14 23:12:35: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codC1C5.tmp
+2025-04-14 23:12:35: Code length: 99
+2025-04-14 23:12:35: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codC1C5.tmp" 2>&1
+2025-04-14 23:12:35: Python output: {"language": "PHP", "confidence": "High", "features": ["PHP opening tag", "Variable assignment", "Echo statement", "Function definition"], "debug": {"scores": {"Python": 1, "JavaScript": 1, "Java": 0, "C++": 0, "PHP": 4, "Ruby": 0, "HTML": 0, "CSS": 0}}}
+2025-04-14 23:12:36: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codC716.tmp
+2025-04-14 23:12:36: Code length: 95
+2025-04-14 23:12:36: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codC716.tmp" 2>&1
+2025-04-14 23:12:36: Python output: {"language": "Python", "confidence": "High", "features": ["Function definition", "Indentation-based syntax", "Print function", "Main execution check"], "debug": {"scores": {"Python": 4, "JavaScript": 0, "Java": 0, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 0}}}
+2025-04-14 23:12:37: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codCC37.tmp
+2025-04-14 23:12:37: Code length: 107
+2025-04-14 23:12:37: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codCC37.tmp" 2>&1
+2025-04-14 23:12:38: Python output: {"language": "C++", "confidence": "Low", "features": ["Main function", "Console output"], "debug": {"scores": {"Python": 1, "JavaScript": 0, "Java": 0, "C++": 2, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 0}}}
+2025-04-14 23:12:42: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codDEC6.tmp
+2025-04-14 23:12:42: Code length: 152
+2025-04-14 23:12:42: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codDEC6.tmp" 2>&1
+2025-04-14 23:12:42: Python output: {"language": "HTML", "confidence": "High", "features": ["DOCTYPE declaration", "HTML tag", "Head section", "Body section"], "debug": {"scores": {"Python": 1, "JavaScript": 0, "Java": 0, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 4, "CSS": 0}}}
+2025-04-14 23:12:44: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codE5CC.tmp
+2025-04-14 23:12:44: Code length: 166
+2025-04-14 23:12:44: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codE5CC.tmp" 2>&1
+2025-04-14 23:12:44: Python output: {"language": "CSS", "confidence": "Medium", "features": ["CSS rule", "Class selector", "Pseudo-class"], "debug": {"scores": {"Python": 0, "JavaScript": 0, "Java": 0, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 3}}}
+2025-04-14 23:12:46: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codED01.tmp
+2025-04-14 23:12:46: Code length: 103
+2025-04-14 23:12:46: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codED01.tmp" 2>&1
+2025-04-14 23:12:46: Python output: {"language": "JavaScript", "confidence": "Medium", "features": ["Function declaration", "Variable declaration", "Console logging"], "debug": {"scores": {"Python": 1, "JavaScript": 3, "Java": 0, "C++": 0, "PHP": 1, "Ruby": 0, "HTML": 0, "CSS": 0}}}
+2025-04-14 23:12:47: Temporary file created: C:\Users\Sameer Kumar\AppData\Local\Temp\codF35B.tmp
+2025-04-14 23:12:47: Code length: 95
+2025-04-14 23:12:47: Executing command: python "C:\xampp\htdocs\Programming_Language_Identifier/language_identifier.py" "C:\Users\Sameer Kumar\AppData\Local\Temp\codF35B.tmp" 2>&1
+2025-04-14 23:12:48: Python output: {"language": "Python", "confidence": "High", "features": ["Function definition", "Indentation-based syntax", "Print function", "Main execution check"], "debug": {"scores": {"Python": 4, "JavaScript": 0, "Java": 0, "C++": 0, "PHP": 0, "Ruby": 0, "HTML": 0, "CSS": 0}}}
